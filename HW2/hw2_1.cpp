@@ -29,7 +29,7 @@ float Modulus(int x, int y)
 	return x % y;
 }
 
-void Menu()
+void menu()
 {
 	cout << "MENU" << endl;
 	cout << "1. Add" << endl;
@@ -45,7 +45,7 @@ int main()
 	float number1 = 0.0, number2 = 0.0;
 	char press_key;
 
-	Menu();
+	menu();
 
 	while (true)
 	{
