@@ -1,4 +1,6 @@
-// Sort 10 integer values
+/*
+Write a C++ program (using function) to sort 10 integer values
+*/
 
 #include <iostream>
 

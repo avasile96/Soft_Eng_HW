@@ -1,4 +1,8 @@
-// Prompt the user to input ten integer values
+/*
+Write a C++ program that will prompt the user to input ten integer values
+
+The program will display the smallest and greatest of those values. It also displays the value that occurs the most.
+*/
 
 #include <iostream>
 

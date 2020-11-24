@@ -1,32 +1,115 @@
-// Calculator
+/*
+Calculator menu.
+MENU  
+          1. Add  
+          2. Subtract  
+          3. Multiply  
+          4. Divide  
+          5. Modulus  
+Enter your choice: 1  
+Enter your two numbers: 12 15  
+Result: 27
+Continue? y  
+The program also asks the user to decide whether he/she wants to continue the operation. If he/she input ‘y’, the program will prompt the user to choose the operation gain. Otherwise, the program will terminate.
+*/
 
 #include <iostream>
 
 using namespace std;
 
-float Add(float x, float y)
+// Functions (declaration)
+void menu();
+float addition(float a, float b);
+float subtraction(float a, float b);
+float multiplication(float a, float b);
+float division(float a, float b);
+float modulo(int a , int b);
+
+int main()
 {
-	return x + y;
+	int op = 0;
+	float a = 0, b = 0;
+	char key_in;
+
+	while (true)
+	{
+        menu();
+		cout << "Select number of operation: " << endl;
+		cin >> op;
+
+		if (op < 1 || op > 5 )
+		{
+			cout << "Invalid number, please choose a number between 1 and 5." << endl;
+			continue;
+		} 
+
+		cout << "First number: " << endl;
+		cin >> a;
+        cout << "Second number: " << endl;
+        cin >> b;
+
+		switch (op)
+		{
+			case 1:
+				cout << "The result of " << a << " + " << b << " is " << addition(a, b) << endl;
+				break;
+			case 2:
+				cout << "The result of " << a << " - " << b << " is " << subtraction(a, b) << endl;
+				break;
+			case 3:
+				cout << "The result of " << a << " x " << b << " is " << multiplication(a, b) << endl;
+				break;
+			case 4:
+            if (b != 0)
+				cout << "The result of " << a << " / " << b << " is " << division(a, b) << endl;
+                else
+                {
+                    cout << "Division by 0 is impossible for real numbers!" << endl;
+                }
+                
+				break;
+			case 5:
+				cout << "The result of " << a << " modulo " << b << " is " << modulo(a, b) << endl;
+				break;
+		}
+
+		cout << "Continue with another operation (type Y/N and hit ENTER)... " << endl;
+		cin >> key_in;
+
+		if (key_in == 'y' || key_in == 'Y')
+			;
+		else
+			break;
+
+	}
+
 }
 
-float Subtract(float x, float y)
+// Functions
+
+float addition(float a, float b)
 {
-	return x - y;
+	return a + b;
 }
 
-float Multiply(float x, float y)
+float subtraction(float a, float b)
 {
-	return x * y;
+	return a - b;
 }
 
-float Divide(float x, float y)
+float multiplication(float a, float b)
 {
-	return x / y;
+	return a * b;
 }
 
-float Modulus(int x, int y)
+float division(float a, float b)
 {
-	return x % y;
+	return a / b; 
+}
+
+float modulo(int a, int b)
+{
+	return a % b;
 }
 
 void menu()
@@ -37,56 +120,4 @@ void menu()
 	cout << "3. Multiply" << endl;
 	cout << "4. Divide" << endl;
 	cout << "5. Modulus" << endl;
-}
-
-int main()
-{
-	int operation = 0;
-	float number1 = 0.0, number2 = 0.0;
-	char press_key;
-
-	menu();
-
-	while (true)
-	{
-		cout << "Select the operation you want to do" << endl;
-		cin >> operation;
-		cin.clear();
-		if (operation > 5 || operation < 1)
-		{
-			cout << "No operation available. Please select a number beetween 1-5";
-			continue;
-		} 
-		cout << "Select 2 numbers to operate" << endl;
-		cin >> number1 >> number2;
-		cin.clear();
-
-		switch (operation)
-		{
-			case 1:
-				cout << Add(number1, number2) << endl;
-				break;
-			case 2:
-				cout << Subtract(number1, number2) << endl;
-				break;
-			case 3:
-				cout << Multiply(number1, number2) << endl;
-				break;
-			case 4:
-				cout << Divide(number1, number2) << endl;
-				break;
-			case 5:
-				cout << Modulus(number1, number2) << endl;
-				break;
-		}
-		cout << "Do you want to do another operation? If yes, press y" << endl;
-		cin >> press_key;
-		cin.clear();
-		if (press_key == 'y')
-			;
-		else
-			break;
-
-	}
-
 }
