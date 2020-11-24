@@ -6,40 +6,53 @@ The function returns a pointer that points to the sorted array.
 */
 
 #include <iostream>
-
 using namespace std;
 
-int * sort_table(int* table, int size)
-{
-	int * head = table;
-	int * next = table + 1;
-	int temp;
-	
-	for(int i=0;i<=size;i++)
-	{		
-		for(int j=i+1;j<size;j++)
-		{
-			if(*table > *next)
-			{
-				temp  = *table;
-				*table = *next;
-				*next =temp;
-			}
-			table++;
-			next++;
-		}
-		table = head;
-		next = head + 1;
-	}
-	return table;
-}
+
+//Function declaration
+int *ptr_sort_arr(int* arr, int sz);
 
 int main()
 {
-	int table[10] = { 10, -5, 3, 1, 8, -10, -15, 4, 82, -94 };
-	int *sorted = sort_table(table, 10);
-	
+	int array[10] = {100, 30, -14, 49, -57, 30, 150, 98, 96, 42};
+    cout << "Unsorted array: " ;
+    for(int i=0; i<10;i++)
+    {
+	    cout << array[i] << " ";
+    }
+    cout << endl;
+
+	int *sort_arr = ptr_sort_arr(array, 10);
+
+    cout << "Sorted array: ";
 	for(int i=0; i<10;i++)
-	    cout << *sorted++ << " ";
+    {
+	    cout << *sort_arr++ << " ";
+    }
+    cout << endl;
+}
+
+int *ptr_sort_arr(int* arr, int sz)
+{
+	int *z = arr;
+	int *arr_plus_1 = arr + 1;
+	int tmp = 0;
 	
+	for(int i = 0; i <= sz; i++)
+	{		
+		for(int j = i+1 ; j < sz; j++)
+		{
+			if(*arr > *arr_plus_1)
+			{
+				tmp  = *arr;
+				*arr = *arr_plus_1;
+				*arr_plus_1 = tmp;
+			}
+			arr++;
+			arr_plus_1++;
+		}
+		arr = z;
+		arr_plus_1 = z + 1;
+	}
+	return arr;
 }

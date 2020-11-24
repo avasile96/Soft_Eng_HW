@@ -1,67 +1,92 @@
 /*
 Write a C++ program that will prompt the user to input ten integer values
-
 The program will display the smallest and greatest of those values. It also displays the value that occurs the most.
 */
 
 #include <iostream>
-
 using namespace std;
 
 
+// Functions (declaration)
+int minim(int vector[]);
+int maxim(int vector[]);
+int mov(int vector[]);
+int i;
+
 int main()
 {
-	int min, max, mod_index, mod_max;
-	int array[10] = {0};
-	int mod_array[10] = { 0 };
-
-	cout << "enter 10 values" << endl;
-	int i;
+    int vector[10] = {0};
+	cout << "Please input 10 values: " << endl;
 	for (i = 0; i < 10; i++)
 	{
-		cin >> array[i];
-		for (int k = 0; k < i; k++)
-		{
-			if (array[i] == array[k])
-			{
-				mod_array[k]++;
-				break;
-			}
-		}
+		cin >> vector[i];
 	}
 
-	min = array[0];
-	max = array[0];
-	mod_max = mod_array[0];
-	mod_index = 0;
+    cout << "The minimum of the inputed vector is " << minim(vector) << endl;
+    cout << "The maximum of the inputed vector is " << maxim(vector) <<endl;
+    cout << "The most occured value in the inputed vector is " << mov(vector) <<endl;
+}
 
+int minim(int vector[])
+{
+    int min = vector[0];
+    for (int i = 0; i < 10; i++)
+	{
+		if (vector[i] < min)
+        {
+			min = vector[i];
+        }
+	}
+    return min;
+}
+
+int maxim(int vector[])
+{
+    int max = vector[0];
 	for (int i = 0; i < 10; i++)
 	{
-		cout << mod_array[i];
-	}
+		if (vector[i] > max)
+			max = vector[i];
+    }
+    return max;
+}
 
-	for (int i = 0; i < 10; i++)
-	{
-		if (array[i] > max)
-			max = array[i];
-		if (array[i] < min)
-			min = array[i];
-		if (mod_array[i] > mod_max)
-		{
-			mod_index = i;
-			mod_max = mod_array[i];
-		}
+int mov(int vector[])
+{
+    int max_count = 0;
+    int sz = 10;
+    int result = 0;
 
-	}
+    for (int i = 0; i < sz; i++)
+    {
+        int count = 1;
+        for (int j = i+1; j < sz; j++)
+        {
+            if (vector[i] == vector[j])
+            {
+                count++;
+            }
+            if (count > max_count)
+            {
+                max_count = count;
+            }
+        }
+    }
 
-
-	if (mod_max == 0)
-	{
-		cout << "all the values are occured just 1 time. There isnt any 'most occured value in this set'" << endl;
-		cout << "minimum value : " << min << "maximum value :" << max << endl;
-	}
-	else
-		cout << "minimum value : " << min << "maximum value :" << max << "mod (most occured value)" << array[mod_index] << endl;
-
-
+    for (int i = 0; i < sz; i++)
+    {
+        int count = 1;
+        for (int j = i+1; j < sz; j++)
+        {
+            if (vector[i] == vector[j])
+            {
+                count++;
+            }
+            if (count == max_count)
+            {
+                result = vector[i];
+            }
+        }
+    }
+return result;
 }

@@ -5,25 +5,25 @@ The five values will be stored in an array using a pointer. Then print the eleme
 */
 
 #include <iostream>
-
 using namespace std;
 
 int main()
 {
-    int array[5];
-    int * ptr = array;
+    int arr[5] = {};
+    int *ptr = arr;
     
     for (int i = 0; i < 5; i++)
     {
-        cout << "enter value" << i << endl;
+        cout << "Value #" << i <<": ";
         cin >> *ptr++;
     }
     
+    cout << "The inputed values are: " << endl;
+
     for (int i = 0; i < 5; i++)
     {
-        cout << array[i] << " ";
+        cout << arr[i] << " ";
     }
-    
-   
+    cout << endl;
     return 0;
 }

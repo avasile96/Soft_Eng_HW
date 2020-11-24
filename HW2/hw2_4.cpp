@@ -12,38 +12,44 @@ element to the left of the element directly above it. See the example Pascal tri
 1	2	1		
 1	3	3	1	
 1	4	6	4	1
-
 */
 
 #include <iostream>
-
 using namespace std;
 
-void Pascal_Triangle(int size)
-{
-    int arr[size][size];
 
-    for (int line = 0; line < size; line++)
-    {
-        for (int i = 0; i <= line; i++)
-        {
-            if (line == i || i == 0)
-                arr[line][i] = 1;
-            else
-                arr[line][i] = arr[line - 1][i - 1] +
-                arr[line - 1][i];
-            cout << arr[line][i] << " ";
-        }
-        cout << "\n";
-    }
-}
-
+//Function declaration
+void pascal_tr(int sz);
 
 int main()
 {
-    int size;
-    cout << "enter pascal triangle size";
-    cin >> size;
-    Pascal_Triangle(size);
+    int sz;
+    cout << "Which size would you like the Pascal Triangle to be?" <<endl;
+    cin >> sz;
+
+    cout << "Here it is! " <<endl;
+    pascal_tr(sz);
     return 0;
+}
+
+void pascal_tr(int sz) // l = line ; c = column ; sz = size
+{
+    int array[sz][sz];
+
+    for (int l = 0; l < sz; l++)
+    {
+        for (int c = 0; c <= l; c++)
+        {
+            if (l == c || c == 0)
+            {
+                array[l][c] = 1;
+            }
+            else
+            {
+                array[l][c] = array[l-1][c-1] + array[l-1][c];
+            }
+            cout << array[l][c] << " ";
+        }
+        cout << "\n"; // line incrementation on display
+    }
 }

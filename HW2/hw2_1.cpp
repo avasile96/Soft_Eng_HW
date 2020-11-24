@@ -14,8 +14,8 @@ The program also asks the user to decide whether he/she wants to continue the op
 */
 
 #include <iostream>
-
 using namespace std;
+
 
 // Functions (declaration)
 void menu();
