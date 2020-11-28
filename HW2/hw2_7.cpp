@@ -1,6 +1,5 @@
 /*
 Write a C++ function to sort an array of ten integer values in ascending order. 
-
 The function will accept two arguments-- a pointer that points to the array and the array size. 
 The function returns a pointer that points to the sorted array.
 */
